@@ -350,7 +350,7 @@ export default function Home() {
               It is an NFT collection for blockchain developers.
             </li>
             <li className="px-3 my-5 text-lg md:text-xl">
-              10 already joined the whitelist.
+              {tokenIdsMinted}/20 have been minted
             </li>
             <li className="px-3 flex justify-center md:block">
               <div>{renderButton()}</div>
