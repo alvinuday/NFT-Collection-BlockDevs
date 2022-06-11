@@ -369,7 +369,12 @@ export default function Home() {
       </div>
       <footer className="absolute bottom-0 bg-slate-300 text-center inset-x-0 text-xl hover:underline cursor-pointer">
         Made with <span className="text-red-600">&hearts;</span> by{" "}
-        <a className="" target="_blank" href="https://github.com/alvinuday/">
+        <a
+          className=""
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/alvinuday/"
+        >
           Weird-AL
         </a>
       </footer>
