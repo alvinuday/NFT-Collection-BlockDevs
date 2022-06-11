@@ -19,7 +19,7 @@
       bool public _paused;
 
       // max number of BlockDevs
-      uint256 public maxTokenIds = 20;
+      uint256 public maxTokenIds = 10;
 
       // total number of tokenIds minted
       uint256 public tokenIds;
