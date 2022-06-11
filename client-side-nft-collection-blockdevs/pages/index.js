@@ -6,6 +6,7 @@ import Web3Modal from "web3modal";
 import { abi, NFT_CONTRACT_ADDRESS } from "../constants";
 import imageurl from "../public/3dAsset.webp";
 import TextBox from "./components/textBox";
+import DisplayBox from "./components/DisplayBox";
 
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -22,7 +23,8 @@ export default function Home() {
   const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
-
+  // If an NFT has been minted
+  const [isMinted, setMinted] = useState(false);
   /*
       connectWallet: Connects the MetaMask wallet
     */
@@ -57,7 +59,9 @@ export default function Home() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
+      setMinted(true);
       window.alert("You successfully minted a Block Dev!");
+      // console.log(tx);
     } catch (err) {
       console.error(err);
     }
@@ -82,7 +86,9 @@ export default function Home() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
+      setMinted(true);
       window.alert("You successfully minted a Block Dev!");
+      // console.log(tx);
     } catch (err) {
       console.error(err);
     }
@@ -308,7 +314,7 @@ export default function Home() {
       return (
         <div>
           <TextBox
-            text="Presale has started!!! If your address is whitelisted, Mint a Block
+            text="Presale has started! If your address is whitelisted, Mint a Block
             Dev 🥳"
           />
           <button
@@ -350,10 +356,14 @@ export default function Home() {
               It is an NFT collection for blockchain developers.
             </li>
             <li className="px-3 my-5 text-lg md:text-xl">
-              {tokenIdsMinted}/20 have been minted
+              {tokenIdsMinted}/10 have been minted
             </li>
-            <li className="px-3 flex justify-center md:block">
+            <li className="px-3 flex justify-center md:block flex-col">
               <div>{renderButton()}</div>
+              <div>
+                {/* <button onClick={() => setMinted(!isMinted)}>Click</button> */}
+                <DisplayBox show={isMinted} link={tokenIdsMinted} />
+              </div>
             </li>
           </ul>
         </div>
